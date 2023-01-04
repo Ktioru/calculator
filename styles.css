@@ -47,6 +47,7 @@ input {
     height: 120px;
     border-radius: 10px;
     align-self: center;
+    text-align: end;
 }
 
 .buttons {
