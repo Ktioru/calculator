@@ -43,16 +43,28 @@ main {
 }
 
 input {
+    -moz-appearance: textfield;
     width: 80%;
     height: 120px;
     border-radius: 10px;
     align-self: center;
+    font-size: 48px;
     text-align: end;
+    
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
 
 button {
     font-size: 24px;
 }
+
 .buttons {
     display: flex;
     flex-direction: row;

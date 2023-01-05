@@ -1,7 +1,8 @@
+//Declaration of global variables
 let displayValue = []
 let operations = []
-
-let point = ""
+let point = false
+let pointText = ""
 
 const input = document.querySelector("input")
 let buttons = document.querySelectorAll("#number")
@@ -61,8 +62,15 @@ function operate(numbers, operations) {
                     break;
                 
                 case "÷":
-                    total = divide(total, numbers[c])
-                    break;
+                    if (numbers.includes(0)) {
+                        window.alert("Invalid number")
+                        total = null
+                        break;
+                    } else {
+                        total = divide(total, numbers[c])
+                        break;
+                    }
+                    
             }
                 
         }
@@ -77,6 +85,8 @@ function deletee() {
 
 function clear() {
     input.value = ""
+    pointText = ""
+    point = false
     total = 0
     displayValue = []
     operations = []
@@ -86,11 +96,19 @@ function startCalculator() {
     
     buttons.forEach((number) => {
         number.addEventListener("click", () => {
-            if (number.textContent == "." && point == "" && input.value.includes(".") == false) {
-                point = "."
-            } else {
-                input.value += point + number.textContent
-                point = ""
+            if (number.textContent == "." && point == false) {
+                pointText = "."
+                point = true
+            } else if (number.textContent == "." && point == true) return
+            else {
+                if (input.value.includes(".") == false) {
+                    input.value += pointText + number.textContent
+                    pointText = ""
+                } else {
+                    input.value += number.textContent
+                }
+                
+                console.log()
             }
             
     })
@@ -98,10 +116,13 @@ function startCalculator() {
     
     operationBtns.forEach((button) => {
         button.addEventListener("click", () => {
-            displayValue.push(Number(input.value))
-            operations.push(button.textContent)
-            input.value = ""
-
+            if (input.value == 0) return
+            else {
+                displayValue.push(Number(input.value))
+                operations.push(button.textContent)
+                input.value = ""
+            }
+            
         })
     })
     
