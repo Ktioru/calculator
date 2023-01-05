@@ -2,6 +2,14 @@ let displayValue = []
 let operations = []
 
 let point = ""
+
+const input = document.querySelector("input")
+let buttons = document.querySelectorAll("#number")
+const operationBtns = document.querySelectorAll(".operation")
+const equalBtn = document.querySelector(".equal")
+const deleteBtn = document.querySelector(".delete")
+const clearBtn = document.querySelector(".clear")
+
 function add(...args) {
     let total = 0
     args.forEach((number) => {
@@ -56,18 +64,26 @@ function operate(numbers, operations) {
                     total = divide(total, numbers[c])
                     break;
             }
-            
-            
+                
         }
         
     }
     return total
 }
 
+function deletee() {
+    input.value = ""
+}
+
+function clear() {
+    input.value = ""
+    total = 0
+    displayValue = []
+    operations = []
+}
+
 function startCalculator() {
-    const input = document.querySelector("input")
-    let buttons = document.querySelectorAll("#number")
-    console.log(buttons)
+    
     buttons.forEach((number) => {
         number.addEventListener("click", () => {
             if (number.textContent == "." && point == "" && input.value.includes(".") == false) {
@@ -79,7 +95,7 @@ function startCalculator() {
             
     })
 })
-    const operationBtns = document.querySelectorAll(".operation")
+    
     operationBtns.forEach((button) => {
         button.addEventListener("click", () => {
             displayValue.push(Number(input.value))
@@ -88,16 +104,18 @@ function startCalculator() {
 
         })
     })
-    const equalBtn = document.querySelector(".equal")
+    
     equalBtn.addEventListener("click", () => {
         displayValue.push(Number(input.value))
-        console.log(displayValue)
+        console.log(displayValue, operations)
         result = operate(displayValue, operations)
+        clear()
         input.value = result
-        total = 0
-        displayValue = []
-        operations = []
+        
     })
+    
+    deleteBtn.addEventListener("click", deletee)
+    clearBtn.addEventListener("click", clear)
 }
 
 startCalculator()
