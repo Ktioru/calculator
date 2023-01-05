@@ -50,6 +50,9 @@ input {
     text-align: end;
 }
 
+button {
+    font-size: 24px;
+}
 .buttons {
     display: flex;
     flex-direction: row;
