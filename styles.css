@@ -1,9 +1,9 @@
 * {
     box-sizing: border-box;
+    color: whitesmoke;
 }
 
 body {
-    box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
@@ -14,6 +14,9 @@ body {
     padding: 0;
 
     font-family: Roboto;
+    background-color: #1e2124;
+    
+    
 
 }
 
@@ -30,7 +33,7 @@ main {
  }
 
 .calculator {
-    border:  1px solid black;
+    border:  1px solid whitesmoke;
     width: 350px;
     border-radius: 10px;
     display: flex;
@@ -39,7 +42,9 @@ main {
     
     gap: 8px;
     padding: 10px;
+    background-color: #36393e;
 
+    
 }
 
 input {
@@ -50,19 +55,22 @@ input {
     align-self: center;
     font-size: 48px;
     text-align: end;
-    
+    background-color: #1e2124;
+    border: 0;
+
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0;
 }
 
 
 button {
     font-size: 24px;
+    border: 0;
+   
 }
 
 .buttons {
@@ -70,15 +78,30 @@ button {
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 8px
+    gap: 8px;
+    
+    
+    
 }
 
 .button {
     width: 64px;
     height: 64px;
+    background-color: #424549;
+    
 }
 
 .bigButton {
     width: 144px;
     height: 64px;
+    
 }
+
+.operation, .bigButton, .equal {
+    background-color: #1e2124;
+}
+
+button:hover {
+    background-color: rgb(220, 140, 0);
+}
+
